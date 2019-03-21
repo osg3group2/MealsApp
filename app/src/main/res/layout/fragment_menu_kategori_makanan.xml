@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MenuKategoriMakananFragment">
 
     <LinearLayout
@@ -19,13 +19,14 @@
             android:textSize="24sp" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_kategori_makanan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:spanCount="2"
             tools:itemCount="6"
             tools:layoutManager="android.support.v7.widget.GridLayoutManager"
             tools:listitem="@layout/item_kategory_makanan"
             tools:orientation="vertical"
-            app:spanCount="2"
             tools:scrollbars="vertical" />
 
     </LinearLayout>
