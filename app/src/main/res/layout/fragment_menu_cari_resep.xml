@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".view.fragment.MenuCariResepFragment">
 
     <LinearLayout
@@ -22,13 +24,13 @@
             android:id="@+id/recyclerView_resep_makanan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="none"
             app:spanCount="2"
             tools:itemCount="6"
             tools:layoutManager="android.support.v7.widget.GridLayoutManager"
             tools:listitem="@layout/item_resep_makanan"
-            tools:orientation="vertical"
-            tools:scrollbars="vertical" />
+            tools:orientation="vertical" />
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

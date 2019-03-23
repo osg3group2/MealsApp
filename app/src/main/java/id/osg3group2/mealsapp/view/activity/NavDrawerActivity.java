@@ -1,6 +1,7 @@
 package id.osg3group2.mealsapp.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +21,9 @@ import id.osg3group2.mealsapp.view.fragment.MenuKategoriMakananFragment;
 
 public class NavDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    public static String QUERY = "query";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class NavDrawerActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
 
@@ -64,7 +68,15 @@ public class NavDrawerActivity extends AppCompatActivity
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(NavDrawerActivity.this, "halo" + query, Toast.LENGTH_SHORT).show();
+                if (query.length() > 0) {
+                    MenuCariResepFragment menuCariResepFragment = new MenuCariResepFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    Bundle args = new Bundle();
+                    args.putString("query_string", query);
+                    menuCariResepFragment.setArguments(args);
+                    fragmentTransaction.replace(R.id.framelayout, menuCariResepFragment);
+                    fragmentTransaction.commit();
+                }
                 return false;
             }
 

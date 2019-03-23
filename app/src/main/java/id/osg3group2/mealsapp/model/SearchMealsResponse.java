@@ -3,7 +3,7 @@ package id.osg3group2.mealsapp.model;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class SearchMealResponse{
+public class SearchMealsResponse {
 
 	@SerializedName("meals")
 	private List<SearchMealsData> meals;
@@ -19,7 +19,7 @@ public class SearchMealResponse{
 	@Override
  	public String toString(){
 		return 
-			"SearchMealResponse{" + 
+			"SearchMealsResponse{" +
 			"meals = '" + meals + '\'' + 
 			"}";
 		}
