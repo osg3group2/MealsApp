@@ -1,6 +1,8 @@
 package id.osg3group2.mealsapp.data.remote;
 
 import id.osg3group2.mealsapp.data.MealsDataSource;
+import id.osg3group2.mealsapp.data.remote.ApiInterface;
+import id.osg3group2.mealsapp.data.remote.ApiService;
 import id.osg3group2.mealsapp.model.SearchMealsData;
 import id.osg3group2.mealsapp.model.SearchMealsResponse;
 import retrofit2.Call;
