@@ -2,7 +2,7 @@ package id.osg3group2.mealsapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ListMealsData {
+public class ListMealsCategoryData {
 
 	@SerializedName("strMealThumb")
 	private String strMealThumb;
@@ -40,7 +40,7 @@ public class ListMealsData {
 	@Override
  	public String toString(){
 		return 
-			"ListMealsData{" +
+			"ListMealsCategoryData{" +
 			"strMealThumb = '" + strMealThumb + '\'' + 
 			",idMeal = '" + idMeal + '\'' + 
 			",strMeal = '" + strMeal + '\'' + 
