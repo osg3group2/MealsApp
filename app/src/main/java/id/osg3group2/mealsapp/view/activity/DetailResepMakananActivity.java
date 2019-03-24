@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import id.osg3group2.mealsapp.R;
 
 public class DetailResepMakananActivity extends AppCompatActivity {
-
 
     @BindView(R.id.image_detail_resep_makanan)
     ImageView imageDetailResepMakanan;
@@ -32,8 +32,7 @@ public class DetailResepMakananActivity extends AppCompatActivity {
     static final String STRINSTRUCTIONS = "STRINSTRUCTIONS";
     static final String STRJOININGREDIENTSANDMEASURE = "STRJOININGREDIENTSANDMEASURE";
     private String namaMeals, imageMealsThumb;
-
-
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
