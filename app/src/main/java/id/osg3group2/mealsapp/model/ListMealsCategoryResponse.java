@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName;
 public class ListMealsCategoryResponse{
 
 	@SerializedName("meals")
-	private List<ListMealsData> meals;
+	private List<ListMealsCategoryData> meals;
 
-	public void setMeals(List<ListMealsData> meals){
+	public void setMeals(List<ListMealsCategoryData> meals){
 		this.meals = meals;
 	}
 
-	public List<ListMealsData> getMeals(){
+	public List<ListMealsCategoryData> getMeals(){
 		return meals;
 	}
 
