@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.DetailResepMakananActivity"></activity>
-        <activity android:name=".view.activity.TentangActivity" />
+        <activity android:name=".view.activity.TentangActivity"></activity>
+        <activity android:name=".view.activity.DetailResepMakananActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".view.activity.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
