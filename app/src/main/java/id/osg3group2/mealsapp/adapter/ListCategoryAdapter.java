@@ -42,12 +42,13 @@ public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryHolder categoryHolder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryHolder categoryHolder, int position) {
         categoryHolder.imageItemNamaKategoriMakanan.setText(categoryDataList.get(position).getStrCategory());
         categoryHolder.cardViewItemCategoryMakanan.setOnClickListener(new ItemClickSupport(position, new ItemClickSupport.OnItemClick() {
             @Override
             public void onItemClicked(View view, int position) {
-                Toast.makeText(view.getContext(), "ini " + categoryDataList.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(view.getContext(), "ini " + categoryDataList.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
+
             }
         }));
     }

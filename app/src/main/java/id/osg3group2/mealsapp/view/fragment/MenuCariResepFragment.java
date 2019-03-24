@@ -64,7 +64,6 @@ public class MenuCariResepFragment extends Fragment implements MealsNavigator {
             mealsAdapter = new SearchMealsAdapter(searchMealsDataList, getActivity());
             recyclerViewResepMakanan.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             recyclerViewResepMakanan.setAdapter(mealsAdapter);
-
         }
 
         return view;
