@@ -61,7 +61,7 @@ public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapte
 
         @BindView(R.id.image_item_nama_kategori_makanan)
         TextView imageItemNamaKategoriMakanan;
-        @BindView(R.id.cardView_item_category_makanan)
+        @BindView(R.id.cv_item_kategory_makanan)
         CardView cardViewItemCategoryMakanan;
 
         public CategoryHolder(@NonNull View itemView) {
