@@ -1,6 +1,5 @@
 package id.osg3group2.mealsapp.data;
 
-import id.osg3group2.mealsapp.model.SearchMealsData;
 import id.osg3group2.mealsapp.model.SearchMealsResponse;
 
 public interface MealsDataSource {
@@ -8,6 +7,7 @@ public interface MealsDataSource {
 
     interface GetMealsCallback {
         void onMealsLoaded(SearchMealsResponse data);
+
         void onDataNotAvailable(String errorMessage);
     }
 }
