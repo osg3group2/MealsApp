@@ -2,6 +2,7 @@ package id.osg3group2.mealsapp.data;
 
 import id.osg3group2.mealsapp.model.ListCategoryData;
 import id.osg3group2.mealsapp.model.ListCategoryResponse;
+import id.osg3group2.mealsapp.model.ListMealsCategoryResponse;
 
 public class CategoryRepository implements CategoryDataSource {
 
@@ -26,4 +27,21 @@ public class CategoryRepository implements CategoryDataSource {
             }
         });
     }
+
+    @Override
+    public void getListCategoryByFilter(final GetCategoryByFilterCallback getCategoryByFilterCallback, String category) {
+        categoryDataSource.getListCategoryByFilter(new GetCategoryByFilterCallback() {
+            @Override
+            public void onCategoryByFilterLoaded(ListMealsCategoryResponse data) {
+                getCategoryByFilterCallback.onCategoryByFilterLoaded(data);
+            }
+
+            @Override
+            public void onDataNotByIdAvailable(String errorMessage) {
+                getCategoryByFilterCallback.onDataNotByIdAvailable(errorMessage);
+            }
+        }, category);
+    }
+
+
 }

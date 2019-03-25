@@ -1,15 +1,14 @@
 package id.osg3group2.mealsapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ import butterknife.ButterKnife;
 import id.osg3group2.mealsapp.R;
 import id.osg3group2.mealsapp.model.ListCategoryData;
 import id.osg3group2.mealsapp.utils.ItemClickSupport;
+import id.osg3group2.mealsapp.view.activity.KategoriResepActivity;
 
 public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapter.CategoryHolder> {
 
@@ -42,12 +42,18 @@ public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryHolder categoryHolder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryHolder categoryHolder, int position) {
         categoryHolder.imageItemNamaKategoriMakanan.setText(categoryDataList.get(position).getStrCategory());
         categoryHolder.cardViewItemCategoryMakanan.setOnClickListener(new ItemClickSupport(position, new ItemClickSupport.OnItemClick() {
             @Override
             public void onItemClicked(View view, int position) {
-                Toast.makeText(view.getContext(), "ini " + categoryDataList.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(view.getContext(), "ini " + categoryDataList.get(position).getStrCategory(), Toast.LENGTH_SHORT).show();
+                String category = categoryDataList.get(position).getStrCategory();
+
+                Intent intent = new Intent(context, KategoriResepActivity.class);
+                intent.putExtra("query_category", categoryDataList.get(position).getStrCategory());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         }));
     }
