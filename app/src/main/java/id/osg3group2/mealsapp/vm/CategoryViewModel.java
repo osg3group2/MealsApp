@@ -4,6 +4,7 @@ import id.osg3group2.mealsapp.data.CategoryDataSource;
 import id.osg3group2.mealsapp.data.CategoryRepository;
 import id.osg3group2.mealsapp.helpers.CategoryNavigator;
 import id.osg3group2.mealsapp.model.ListCategoryResponse;
+import id.osg3group2.mealsapp.model.ListMealsCategoryResponse;
 
 public class CategoryViewModel {
 
@@ -18,7 +19,7 @@ public class CategoryViewModel {
         this.categoryNavigator = categoryNavigator;
     }
 
-    public void getListCategory(){
+    public void getListCategory() {
 
         categoryRepository.getListCategory(new CategoryDataSource.GetCategoryCallback() {
             @Override
@@ -31,5 +32,19 @@ public class CategoryViewModel {
                 categoryNavigator.errorLoadListCategoryMeals(errorMessage);
             }
         });
+    }
+
+    public void getListCategoryByFilter(String category) {
+        categoryRepository.getListCategoryByFilter(new CategoryDataSource.GetCategoryByFilterCallback() {
+            @Override
+            public void onCategoryByFilterLoaded(ListMealsCategoryResponse data) {
+                categoryNavigator.loadListCategoryByFilter(data.getMeals());
+            }
+
+            @Override
+            public void onDataNotByIdAvailable(String errorMessage) {
+                categoryNavigator.errorLoadListCategoryMeals(errorMessage);
+            }
+        }, category);
     }
 }
