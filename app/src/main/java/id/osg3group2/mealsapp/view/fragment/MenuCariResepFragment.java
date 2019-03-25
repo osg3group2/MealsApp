@@ -66,6 +66,8 @@ public class MenuCariResepFragment extends Fragment implements MealsNavigator {
             recyclerViewResepMakanan.setAdapter(mealsAdapter);
         }
 
+
+
         return view;
     }
 
