@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.KategoriResepActivity"></activity>
+        <activity android:name=".view.activity.DetailResepByCategoryActivity"></activity>
+        <activity android:name=".view.activity.KategoriResepActivity" />
         <activity android:name=".view.activity.TentangActivity" />
         <activity
             android:name=".view.activity.DetailResepMakananActivity"

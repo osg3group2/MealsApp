@@ -27,6 +27,7 @@ import id.osg3group2.mealsapp.helpers.CategoryNavigator;
 import id.osg3group2.mealsapp.helpers.Injection;
 import id.osg3group2.mealsapp.model.ListCategoryData;
 import id.osg3group2.mealsapp.model.ListMealsCategoryData;
+import id.osg3group2.mealsapp.model.SearchMealsData;
 import id.osg3group2.mealsapp.vm.CategoryViewModel;
 
 import static android.support.constraint.Constraints.TAG;
@@ -84,6 +85,11 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
 
     @Override
     public void loadListCategoryByFilter(List<ListMealsCategoryData> mealsCategoryDataList) {
+
+    }
+
+    @Override
+    public void loadListCategoryById(List<SearchMealsData> mealsDataList) {
 
     }
 
