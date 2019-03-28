@@ -1,6 +1,7 @@
 package id.osg3group2.mealsapp.view.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -27,6 +28,7 @@ public class NavDrawerActivity extends AppCompatActivity
 
 
     public static String QUERY = "query";
+    public static final int TEXT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,8 @@ public class NavDrawerActivity extends AppCompatActivity
                     public void onDisconnected() {
                         //Do your task on Network Disconnected!
                         Toast.makeText(NavDrawerActivity.this, "Tidak Terkoneksi Internet", Toast.LENGTH_SHORT).show();
-                        
+                        Intent intent = new Intent(NavDrawerActivity.this, RefresthActivity.class);
+                        startActivityForResult(intent,TEXT_REQUEST);
                     }
                 });
 

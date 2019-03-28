@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.osg3group2.mealsapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
@@ -12,9 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.TentangActivity"></activity>
-        <activity android:name=".view.activity.DetailResepMakananActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.activity.RefresthActivity"></activity>
+        <activity android:name=".view.activity.TentangActivity" />
+        <activity
+            android:name=".view.activity.DetailResepMakananActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activity.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
