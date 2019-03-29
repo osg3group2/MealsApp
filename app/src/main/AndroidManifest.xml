@@ -3,6 +3,8 @@
     package="id.osg3group2.mealsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.DetailResepByCategoryActivity"></activity>
         <activity android:name=".view.activity.KategoriResepActivity" />
+        <activity android:name=".view.activity.RefresthActivity"></activity>
         <activity android:name=".view.activity.TentangActivity" />
         <activity
             android:name=".view.activity.DetailResepMakananActivity"
