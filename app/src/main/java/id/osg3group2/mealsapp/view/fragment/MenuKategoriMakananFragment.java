@@ -129,16 +129,6 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
     }
 
     @Override
-    public void loadListCategoryByFilter(List<ListMealsCategoryData> mealsCategoryDataList) {
-
-    }
-
-    @Override
-    public void loadListCategoryById(List<SearchMealsData> mealsDataList) {
-
-    }
-
-    @Override
     public void errorLoadListCategoryMeals(String message) {
         Log.e(TAG, "errorLoadListCategoryMeals: " + message);
         progressbarCategory.setVisibility(View.GONE);
