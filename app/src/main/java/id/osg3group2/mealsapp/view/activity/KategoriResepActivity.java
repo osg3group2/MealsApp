@@ -92,7 +92,6 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
             progressbarCategory.setVisibility(View.GONE);
             Toast.makeText(this, "Data Tidak Ditemukan !", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

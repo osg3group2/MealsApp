@@ -127,10 +127,40 @@ public class DetailResepByCategoryActivity extends AppCompatActivity implements 
             pd.dismiss();
             Toast.makeText(this, "Data tidak ditemukan !", Toast.LENGTH_SHORT).show();
         }
+
+        namaMeals = mealsDataList.get(0).getStrMeal();
+        String joinIngredientsandMeasure =
+                mealsDataList.get(0).getStrIngredient1() + " " + mealsDataList.get(0).getStrMeasure1()
+                        + "\n" + mealsDataList.get(0).getStrIngredient2() + " " + mealsDataList.get(0).getStrMeasure2()
+                        + "\n" + mealsDataList.get(0).getStrIngredient3() + " " + mealsDataList.get(0).getStrMeasure3()
+                        + "\n" + mealsDataList.get(0).getStrIngredient4() + " " + mealsDataList.get(0).getStrMeasure4()
+                        + "\n" + mealsDataList.get(0).getStrIngredient5() + " " + mealsDataList.get(0).getStrMeasure5()
+                        + "\n" + mealsDataList.get(0).getStrIngredient6() + " " + mealsDataList.get(0).getStrMeasure6()
+                        + "\n" + mealsDataList.get(0).getStrIngredient7() + " " + mealsDataList.get(0).getStrMeasure7()
+                        + "\n" + mealsDataList.get(0).getStrIngredient8() + " " + mealsDataList.get(0).getStrMeasure8()
+                        + "\n" + mealsDataList.get(0).getStrIngredient9() + " " + mealsDataList.get(0).getStrMeasure9()
+                        + "\n" + mealsDataList.get(0).getStrIngredient10() + " " + mealsDataList.get(0).getStrMeasure10()
+                        + "\n" + mealsDataList.get(0).getStrIngredient11() + " " + mealsDataList.get(0).getStrMeasure11()
+                        + "\n" + mealsDataList.get(0).getStrIngredient12() + " " + mealsDataList.get(0).getStrMeasure12()
+                        + "\n" + mealsDataList.get(0).getStrIngredient13() + " " + mealsDataList.get(0).getStrMeasure13()
+                        + "\n" + mealsDataList.get(0).getStrIngredient14() + " " + mealsDataList.get(0).getStrMeasure14()
+                        + "\n" + mealsDataList.get(0).getStrIngredient15() + " " + mealsDataList.get(0).getStrMeasure15()
+                        + "\n" + mealsDataList.get(0).getStrIngredient16() + " " + mealsDataList.get(0).getStrMeasure16()
+                        + "\n" + mealsDataList.get(0).getStrIngredient17() + " " + mealsDataList.get(0).getStrMeasure17()
+                        + "\n" + mealsDataList.get(0).getStrIngredient18() + " " + mealsDataList.get(0).getStrMeasure18()
+                        + "\n" + mealsDataList.get(0).getStrIngredient19() + " " + mealsDataList.get(0).getStrMeasure19()
+                        + "\n" + mealsDataList.get(0).getStrIngredient20() + " " + mealsDataList.get(0).getStrMeasure20();
+        Glide.with(this)
+                .load(mealsDataList.get(0).getStrMealThumb())
+                .into(imageDetailResepMakanan);
+        textInstructionDetailResepMakanan
+                .setText(mealsDataList.get(0).getStrInstructions());
+        textIngredientsDetailResepMakanan.setText(joinIngredientsandMeasure);
     }
 
     @Override
     public void errorLoadListCategoryMeals(String message) {
+
         pd.dismiss();
 
     }

@@ -86,6 +86,8 @@ public class MenuCariResepFragment extends Fragment implements MealsNavigator {
             searchMealsDataList.addAll(mList2);
             mealsAdapter.notifyDataSetChanged();
         }
+      
+        return view;
     }
 
     @Override
