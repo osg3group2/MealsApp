@@ -1,6 +1,7 @@
 package id.osg3group2.mealsapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +25,8 @@ import butterknife.ButterKnife;
 import id.osg3group2.mealsapp.R;
 import id.osg3group2.mealsapp.model.ListMealsCategoryData;
 import id.osg3group2.mealsapp.utils.ItemClickSupport;
+import id.osg3group2.mealsapp.view.activity.DetailResepByCategoryActivity;
+import id.osg3group2.mealsapp.view.activity.DetailResepMakananActivity;
 import id.osg3group2.mealsapp.view.fragment.MenuCariResepFragment;
 
 public class ListCategoryByFilterAdapter extends RecyclerView.Adapter<ListCategoryByFilterAdapter.CategoryByFilterHolder> {
@@ -60,14 +63,10 @@ public class ListCategoryByFilterAdapter extends RecyclerView.Adapter<ListCatego
         categoryByFilterHolder.cardViewItemCategoryMakanan.setOnClickListener(new ItemClickSupport(position, new ItemClickSupport.OnItemClick() {
             @Override
             public void onItemClicked(View view, int position) {
-                /*FragmentManager manager = ((AppCompatActivity) context).getSupportFragmentManager();
-                FragmentTransaction Ft = manager.beginTransaction();
-                Bundle args = new Bundle();
-                args.putString("query_string", mealsCategoryDataList.get(position).getStrMeal());
-                Ft.replace(R.id.framelayout, new MenuCariResepFragment());
-
-                Ft.commit();*/
-                Toast.makeText(context, "ini " + mealsCategoryDataList.get(position).getStrMeal(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailResepByCategoryActivity.class);
+                intent.putExtra("ID", mealsCategoryDataList.get(position).getIdMeal());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         }));
 

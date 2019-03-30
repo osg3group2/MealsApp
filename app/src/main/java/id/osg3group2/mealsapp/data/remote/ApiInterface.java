@@ -20,4 +20,8 @@ public interface ApiInterface {
     //https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
     @GET("/api/json/v1/1/filter.php")
     Call<ListMealsCategoryResponse> filterMealByCategory(@Query("c") String search);
+
+    //https://www.themealdb.com/api/json/v1/1/lookup.php?i=52959
+    @GET("/api/json/v1/1/lookup.php")
+    Call<SearchMealsResponse> filterMealById(@Query("i") String id);
 }

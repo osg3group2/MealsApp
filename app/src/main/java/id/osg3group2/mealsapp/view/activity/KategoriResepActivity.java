@@ -18,6 +18,7 @@ import id.osg3group2.mealsapp.helpers.CategoryNavigator;
 import id.osg3group2.mealsapp.helpers.Injection;
 import id.osg3group2.mealsapp.model.ListCategoryData;
 import id.osg3group2.mealsapp.model.ListMealsCategoryData;
+import id.osg3group2.mealsapp.model.SearchMealsData;
 import id.osg3group2.mealsapp.vm.CategoryViewModel;
 
 import static android.support.constraint.Constraints.TAG;
@@ -61,6 +62,11 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
     public void loadListCategoryByFilter(List<ListMealsCategoryData> mealsCategoryDataList) {
         this.mealsCategoryDataList.addAll(mealsCategoryDataList);
         listCategoryByFilterAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void loadListCategoryById(List<SearchMealsData> mealsDataList) {
+
     }
 
     @Override
