@@ -1,11 +1,14 @@
 package id.osg3group2.mealsapp.view.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -38,12 +41,20 @@ public class DetailResepByCategoryActivity extends AppCompatActivity implements 
     private List<SearchMealsData> mealsCategoryDataList;
     private String namaMeals;
 
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_resep_by_category);
         ButterKnife.bind(this);
+        pd = new ProgressDialog(this);
+        pd.setMessage("Loading...");
+        pd.show();
+
+
         String ID = getIntent().getStringExtra("ID");
+        String NAME = getIntent().getStringExtra("NAME");
 
         categoryViewModel = new CategoryViewModel(Injection.provideCategoryRepository(this));
         mealsCategoryDataList = new ArrayList<>();
@@ -51,10 +62,20 @@ public class DetailResepByCategoryActivity extends AppCompatActivity implements 
 
 
         categoryViewModel.getListCategoryById(ID);
-
-        toolbarDetailResepMakanan.setTitle(namaMeals);
+        toolbarDetailResepMakanan.setTitle(NAME);
         setSupportActionBar(toolbarDetailResepMakanan);
+
         if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -69,6 +90,44 @@ public class DetailResepByCategoryActivity extends AppCompatActivity implements 
 
     @Override
     public void loadListCategoryById(List<SearchMealsData> mealsDataList) {
+        try {
+            namaMeals = mealsDataList.get(0).getStrMeal();
+
+            String joinIngredientsandMeasure =
+                    mealsDataList.get(0).getStrIngredient1() + " " + mealsDataList.get(0).getStrMeasure1()
+                            + "\n" + mealsDataList.get(0).getStrIngredient2() + " " + mealsDataList.get(0).getStrMeasure2()
+                            + "\n" + mealsDataList.get(0).getStrIngredient3() + " " + mealsDataList.get(0).getStrMeasure3()
+                            + "\n" + mealsDataList.get(0).getStrIngredient4() + " " + mealsDataList.get(0).getStrMeasure4()
+                            + "\n" + mealsDataList.get(0).getStrIngredient5() + " " + mealsDataList.get(0).getStrMeasure5()
+                            + "\n" + mealsDataList.get(0).getStrIngredient6() + " " + mealsDataList.get(0).getStrMeasure6()
+                            + "\n" + mealsDataList.get(0).getStrIngredient7() + " " + mealsDataList.get(0).getStrMeasure7()
+                            + "\n" + mealsDataList.get(0).getStrIngredient8() + " " + mealsDataList.get(0).getStrMeasure8()
+                            + "\n" + mealsDataList.get(0).getStrIngredient9() + " " + mealsDataList.get(0).getStrMeasure9()
+                            + "\n" + mealsDataList.get(0).getStrIngredient10() + " " + mealsDataList.get(0).getStrMeasure10()
+                            + "\n" + mealsDataList.get(0).getStrIngredient11() + " " + mealsDataList.get(0).getStrMeasure11()
+                            + "\n" + mealsDataList.get(0).getStrIngredient12() + " " + mealsDataList.get(0).getStrMeasure12()
+                            + "\n" + mealsDataList.get(0).getStrIngredient13() + " " + mealsDataList.get(0).getStrMeasure13()
+                            + "\n" + mealsDataList.get(0).getStrIngredient14() + " " + mealsDataList.get(0).getStrMeasure14()
+                            + "\n" + mealsDataList.get(0).getStrIngredient15() + " " + mealsDataList.get(0).getStrMeasure15()
+                            + "\n" + mealsDataList.get(0).getStrIngredient16() + " " + mealsDataList.get(0).getStrMeasure16()
+                            + "\n" + mealsDataList.get(0).getStrIngredient17() + " " + mealsDataList.get(0).getStrMeasure17()
+                            + "\n" + mealsDataList.get(0).getStrIngredient18() + " " + mealsDataList.get(0).getStrMeasure18()
+                            + "\n" + mealsDataList.get(0).getStrIngredient19() + " " + mealsDataList.get(0).getStrMeasure19()
+                            + "\n" + mealsDataList.get(0).getStrIngredient20() + " " + mealsDataList.get(0).getStrMeasure20();
+            Glide.with(this)
+                    .load(mealsDataList.get(0).getStrMealThumb())
+                    .into(imageDetailResepMakanan);
+            textInstructionDetailResepMakanan
+                    .setText(mealsDataList.get(0).getStrInstructions());
+            textIngredientsDetailResepMakanan.setText(joinIngredientsandMeasure);
+
+            pd.dismiss();
+        } catch (Exception e) {
+            e.printStackTrace();
+            pd.dismiss();
+            Toast.makeText(this, "Data tidak ditemukan !", Toast.LENGTH_SHORT).show();
+        }
+
         namaMeals = mealsDataList.get(0).getStrMeal();
         String joinIngredientsandMeasure =
                 mealsDataList.get(0).getStrIngredient1() + " " + mealsDataList.get(0).getStrMeasure1()
@@ -101,6 +160,8 @@ public class DetailResepByCategoryActivity extends AppCompatActivity implements 
 
     @Override
     public void errorLoadListCategoryMeals(String message) {
+
+        pd.dismiss();
 
     }
 }

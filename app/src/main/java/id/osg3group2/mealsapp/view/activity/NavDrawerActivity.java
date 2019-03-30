@@ -24,6 +24,7 @@ import id.osg3group2.mealsapp.helpers.CheckNetworkConnectionHelper;
 import id.osg3group2.mealsapp.listener.OnNetworkConnectionChangeListener;
 import id.osg3group2.mealsapp.view.fragment.MenuCariResepFragment;
 import id.osg3group2.mealsapp.view.fragment.MenuKategoriMakananFragment;
+import id.osg3group2.mealsapp.view.fragment.TentangFragment;
 
 public class NavDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +32,8 @@ public class NavDrawerActivity extends AppCompatActivity
     public static String QUERY = "query";
     MaterialSearchView searchView;
     public static final int TEXT_REQUEST = 1;
+
+    CheckNetworkConnectionHelper checkNetworkConnectionHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +58,19 @@ public class NavDrawerActivity extends AppCompatActivity
 
         TextView textView = findViewById(R.id.textView);
 
-        CheckNetworkConnectionHelper checkNetworkConnectionHelper = CheckNetworkConnectionHelper.getInstance();
+        checkNetworkConnectionHelper = CheckNetworkConnectionHelper.getInstance();
         checkNetworkConnectionHelper.onNetworkConnectionChange(this,
                 new OnNetworkConnectionChangeListener() {
                     @Override
                     public void onConnected() {
                         //Do your task on Network Connected!
-                        Toast.makeText(NavDrawerActivity.this, "Terkoneksi Internet", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(NavDrawerActivity.this, "Terkoneksi Internet", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onDisconnected() {
                         //Do your task on Network Disconnected!
-                        Toast.makeText(NavDrawerActivity.this, "Tidak Terkoneksi Internet", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(NavDrawerActivity.this, "Tidak Terkoneksi Internet", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(NavDrawerActivity.this, RefresthActivity.class);
                         startActivityForResult(intent,TEXT_REQUEST);
                     }
@@ -147,7 +150,10 @@ public class NavDrawerActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_tentang_app) {
-
+            TentangFragment tentangFragment = new TentangFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.framelayout, tentangFragment);
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

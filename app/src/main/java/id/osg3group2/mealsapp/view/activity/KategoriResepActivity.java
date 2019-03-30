@@ -4,8 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,10 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
     RecyclerView recyclerViewKategoriMakananByFilter;
     @BindView(R.id.jenis_category)
     TextView jenisCategory;
+    @BindView(R.id.toolbar_detail_resep_makanan)
+    Toolbar toolbarDetailResepMakanan;
+    @BindView(R.id.progressbar_category)
+    ProgressBar progressbarCategory;
 
     private CategoryViewModel categoryViewModel;
     private ListCategoryByFilterAdapter listCategoryByFilterAdapter;
@@ -47,10 +56,24 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
 
         String category_query = getIntent().getStringExtra("query_category");
         jenisCategory.setText("Category : " + category_query);
+        progressbarCategory.setVisibility(View.VISIBLE);
         categoryViewModel.getListCategoryByFilter(category_query);
         listCategoryByFilterAdapter = new ListCategoryByFilterAdapter(mealsCategoryDataList, this);
         recyclerViewKategoriMakananByFilter.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerViewKategoriMakananByFilter.setAdapter(listCategoryByFilterAdapter);
+        toolbarDetailResepMakanan.setTitle("Category : " + category_query);
+        setSupportActionBar(toolbarDetailResepMakanan);
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -60,8 +83,15 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
 
     @Override
     public void loadListCategoryByFilter(List<ListMealsCategoryData> mealsCategoryDataList) {
-        this.mealsCategoryDataList.addAll(mealsCategoryDataList);
-        listCategoryByFilterAdapter.notifyDataSetChanged();
+        try {
+            this.mealsCategoryDataList.addAll(mealsCategoryDataList);
+            listCategoryByFilterAdapter.notifyDataSetChanged();
+            progressbarCategory.setVisibility(View.GONE);
+        } catch (Exception e){
+            e.printStackTrace();
+            progressbarCategory.setVisibility(View.GONE);
+            Toast.makeText(this, "Data Tidak Ditemukan !", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -72,5 +102,6 @@ public class KategoriResepActivity extends AppCompatActivity implements Category
     @Override
     public void errorLoadListCategoryMeals(String message) {
         Log.e(TAG, "errorLoadListCategoryMeals: " + message);
+        progressbarCategory.setVisibility(View.GONE);
     }
 }

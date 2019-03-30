@@ -21,7 +21,6 @@
             android:parentActivityName=".view.activity.NavDrawerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.activity.RefresthActivity"></activity>
-        <activity android:name=".view.activity.TentangActivity" />
         <activity
             android:name=".view.activity.DetailResepMakananActivity"
             android:parentActivityName=".view.activity.KategoriResepActivity"

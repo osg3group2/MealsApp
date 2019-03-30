@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class SearchMealsAdapter extends RecyclerView.Adapter<SearchMealsAdapter.
                 .setText(searchMealsDataList.get(i).getStrArea());
         Glide.with(context)
                 .load(searchMealsDataList.get(i).getStrMealThumb())
+                .apply(RequestOptions.circleCropTransform())
                 .into(mealsHolder.imageItemResepMakanan);
 
         final String joinIngredientsandMeasure =

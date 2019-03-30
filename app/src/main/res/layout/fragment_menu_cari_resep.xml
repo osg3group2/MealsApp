@@ -5,32 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     android:scrollbars="none"
     tools:context=".view.fragment.MenuCariResepFragment">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/resep_makanan"
+        android:textSize="24sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/resep_makanan"
-            android:textSize="24sp" />
+    <ProgressBar
+        android:id="@+id/progressbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView_resep_makanan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:spanCount="2"
-            tools:itemCount="6"
-            tools:layoutManager="android.support.v7.widget.GridLayoutManager"
-            tools:listitem="@layout/item_resep_makanan"
-            tools:orientation="vertical" />
-
-    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_resep_makanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:spanCount="2"
+        tools:itemCount="6"
+        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:listitem="@layout/item_resep_makanan"
+        tools:orientation="vertical" />
 
 </LinearLayout>

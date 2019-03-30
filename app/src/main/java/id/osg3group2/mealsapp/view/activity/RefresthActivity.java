@@ -20,7 +20,7 @@ public class RefresthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_refresth);
 
 
-        Button retry =(Button)findViewById(R.id.retry);
+        final Button retry =(Button)findViewById(R.id.retry);
         retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

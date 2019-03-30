@@ -14,4 +14,13 @@
     <string name="resep_makanan">Resep Makanan</string>
 
     <string name="no_internet_connection">No internet connection.</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="how_to_cook">How To Cook</string>
+    <string name="osg3group2">Osg3Group2</string>
+    <string name="retry">Retry</string>
+    <string name="about">MealsApp adalah Aplikasi yang dibuat untuk menuntaskan Final Project Eudeka Batch 3</string>
+    <string name="aplikasi_ini_dibuat_oleh">Nama Kelompok</string>
+    <string name="creator">1. Helmi/zhikariz \n2. muasdev/muasstepa \n3. jazuli muhtar \n4. Rizki Maulana \n5. Wisnu</string>
+    <string name="Pembimbing">Ibnu Sina Wardy</string>
+    <string name="special_thanks_to">Special Thanks To Our Mentor</string>
 </resources>
