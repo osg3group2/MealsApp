@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class ListCategoryByFilterAdapter extends RecyclerView.Adapter<ListCatego
                 .setText(mealsCategoryDataList.get(position).getStrMeal());
         Glide.with(context)
                 .load(mealsCategoryDataList.get(position).getStrMealThumb())
+                .apply(RequestOptions.circleCropTransform())
                 .into(categoryByFilterHolder.imageItemKategoriMakanan);
 
         categoryByFilterHolder.cardViewItemCategoryMakanan.setOnClickListener(new ItemClickSupport(position, new ItemClickSupport.OnItemClick() {
@@ -65,6 +67,7 @@ public class ListCategoryByFilterAdapter extends RecyclerView.Adapter<ListCatego
             public void onItemClicked(View view, int position) {
                 Intent intent = new Intent(context, DetailResepByCategoryActivity.class);
                 intent.putExtra("ID", mealsCategoryDataList.get(position).getIdMeal());
+                intent.putExtra("NAME",mealsCategoryDataList.get(position).getStrMeal());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

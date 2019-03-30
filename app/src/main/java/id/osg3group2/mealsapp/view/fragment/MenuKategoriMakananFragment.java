@@ -1,19 +1,18 @@
 package id.osg3group2.mealsapp.view.fragment;
 
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +40,14 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
     @BindView(R.id.recyclerView_kategori_makanan)
     RecyclerView recyclerViewKategoriMakanan;
     Unbinder unbinder;
+    @BindView(R.id.progressbar_category)
+    ProgressBar progressbarCategory;
 
     private CategoryViewModel categoryViewModel;
     private ListCategoryAdapter categoryAdapter;
-    private List<ListCategoryData> categoryDataList;
+    private ArrayList<ListCategoryData> categoryDataList;
+
+    public static final String KEY_CATEGORY = "category";
 
 
     public MenuKategoriMakananFragment() {
@@ -59,16 +62,35 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
         View view = inflater.inflate(R.layout.fragment_menu_kategori_makanan, container, false);
         unbinder = ButterKnife.bind(this, view);
 
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         categoryViewModel = new CategoryViewModel(Injection.provideCategoryRepository(getActivity()));
         categoryDataList = new ArrayList<>();
         categoryViewModel.setCategoryNavigator(this);
 
-        categoryViewModel.getListCategory();
         categoryAdapter = new ListCategoryAdapter(categoryDataList, getActivity());
         recyclerViewKategoriMakanan.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewKategoriMakanan.setAdapter(categoryAdapter);
 
-        return view;
+        if(savedInstanceState == null) {
+            progressbarCategory.setVisibility(View.VISIBLE);
+            categoryViewModel.getListCategory();
+        } else {
+            ArrayList<ListCategoryData> mList2 = savedInstanceState.getParcelableArrayList(KEY_CATEGORY);
+            categoryDataList.addAll(mList2);
+            categoryAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelableArrayList(KEY_CATEGORY, categoryDataList);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -79,8 +101,16 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
 
     @Override
     public void loadListCategoryMeals(List<ListCategoryData> categoryDataList) {
-        this.categoryDataList.addAll(categoryDataList);
-        categoryAdapter.notifyDataSetChanged();
+        try{
+            this.categoryDataList.addAll(categoryDataList);
+            categoryAdapter.notifyDataSetChanged();
+            progressbarCategory.setVisibility(View.GONE);
+        } catch (Exception e) {
+            progressbarCategory.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "Data Tidak Ditemukan !", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -96,5 +126,6 @@ public class MenuKategoriMakananFragment extends Fragment implements CategoryNav
     @Override
     public void errorLoadListCategoryMeals(String message) {
         Log.e(TAG, "errorLoadListCategoryMeals: " + message);
+        progressbarCategory.setVisibility(View.GONE);
     }
 }

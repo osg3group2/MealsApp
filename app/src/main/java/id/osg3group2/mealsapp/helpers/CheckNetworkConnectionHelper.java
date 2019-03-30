@@ -33,6 +33,10 @@ public class CheckNetworkConnectionHelper implements LifecycleObserver {
         removeStateChangeListener();
     }
 
+    public NetworkBroadcastReceiver getBroadcastReceiver() {
+        return mNetworkBroadcastReceiver;
+    }
+
     public void onNetworkConnectionChange(Activity activity,
                                           OnNetworkConnectionChangeListener onNetworkConnectionChangeListener) {
         if (activity == null) {
