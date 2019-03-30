@@ -4,6 +4,8 @@ import id.osg3group2.mealsapp.data.CategoryDataSource;
 import id.osg3group2.mealsapp.data.CategoryRepository;
 import id.osg3group2.mealsapp.helpers.CategoryNavigator;
 import id.osg3group2.mealsapp.model.ListCategoryResponse;
+import id.osg3group2.mealsapp.model.ListMealsCategoryResponse;
+import id.osg3group2.mealsapp.model.SearchMealsResponse;
 
 public class CategoryViewModel {
 
@@ -18,7 +20,7 @@ public class CategoryViewModel {
         this.categoryNavigator = categoryNavigator;
     }
 
-    public void getListCategory(){
+    public void getListCategory() {
 
         categoryRepository.getListCategory(new CategoryDataSource.GetCategoryCallback() {
             @Override
@@ -31,5 +33,33 @@ public class CategoryViewModel {
                 categoryNavigator.errorLoadListCategoryMeals(errorMessage);
             }
         });
+    }
+
+    public void getListCategoryByFilter(String category) {
+        categoryRepository.getListCategoryByFilter(new CategoryDataSource.GetCategoryByFilterCallback() {
+            @Override
+            public void onCategoryByFilterLoaded(ListMealsCategoryResponse data) {
+                categoryNavigator.loadListCategoryByFilter(data.getMeals());
+            }
+
+            @Override
+            public void onDataNotByIdAvailable(String errorMessage) {
+                categoryNavigator.errorLoadListCategoryMeals(errorMessage);
+            }
+        }, category);
+    }
+
+    public void getListCategoryById(String id) {
+        categoryRepository.getListCategoryById(new CategoryDataSource.GetCategoryByIdCallback() {
+            @Override
+            public void onCategoryByIdLoaded(SearchMealsResponse mealsResponse) {
+                categoryNavigator.loadListCategoryById(mealsResponse.getMeals());
+            }
+
+            @Override
+            public void onDataNotByIdAvailable(String errorMessage) {
+                categoryNavigator.errorLoadListCategoryMeals(errorMessage);
+            }
+        }, id);
     }
 }

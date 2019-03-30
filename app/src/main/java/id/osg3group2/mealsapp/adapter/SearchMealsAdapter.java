@@ -51,9 +51,13 @@ public class SearchMealsAdapter extends RecyclerView.Adapter<SearchMealsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MealsHolder mealsHolder, final int i) {
-        mealsHolder.textItemNamaResepMakanan.setText(searchMealsDataList.get(i).getStrMeal());
-        mealsHolder.textItemAsalResepMakanan.setText(searchMealsDataList.get(i).getStrArea());
-        Glide.with(context).load(searchMealsDataList.get(i).getStrMealThumb()).into(mealsHolder.imageItemResepMakanan);
+        mealsHolder.textItemNamaResepMakanan
+                .setText(searchMealsDataList.get(i).getStrMeal());
+        mealsHolder.textItemAsalResepMakanan
+                .setText(searchMealsDataList.get(i).getStrArea());
+        Glide.with(context)
+                .load(searchMealsDataList.get(i).getStrMealThumb())
+                .into(mealsHolder.imageItemResepMakanan);
 
         final String joinIngredientsandMeasure =
                 searchMealsDataList.get(i).getStrIngredient1() + " " + searchMealsDataList.get(i).getStrMeasure1()
