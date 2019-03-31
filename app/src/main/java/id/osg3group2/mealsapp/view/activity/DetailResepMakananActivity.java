@@ -1,6 +1,8 @@
 package id.osg3group2.mealsapp.view.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +14,6 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import id.osg3group2.mealsapp.R;
 
 public class DetailResepMakananActivity extends AppCompatActivity {
@@ -32,8 +33,12 @@ public class DetailResepMakananActivity extends AppCompatActivity {
     static final String STRMEALTHUMB = "STRMEALTHUMB";
     static final String STRINSTRUCTIONS = "STRINSTRUCTIONS";
     static final String STRJOININGREDIENTSANDMEASURE = "STRJOININGREDIENTSANDMEASURE";
+    @BindView(R.id.collapsingToolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.mAppBar)
+    AppBarLayout mAppBar;
     private String namaMeals, imageMealsThumb;
-  
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,7 @@ public class DetailResepMakananActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setData();
 
+//        collapsingToolbar.setVisibility(View.INVISIBLE);
         toolbarDetailResepMakanan.setTitle(namaMeals);
         setSupportActionBar(toolbarDetailResepMakanan);
         if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,10 +67,19 @@ public class DetailResepMakananActivity extends AppCompatActivity {
         namaMeals = getIntent().getStringExtra(STRMEAL);
         imageMealsThumb = getIntent().getStringExtra(STRMEALTHUMB);
 
+
         Glide.with(this)
                 .load(imageMealsThumb)
                 .into(imageDetailResepMakanan);
         textIngredientsDetailResepMakanan.setText(getIntent().getStringExtra(STRJOININGREDIENTSANDMEASURE));
         textInstructionDetailResepMakanan.setText(getIntent().getStringExtra(STRINSTRUCTIONS));
+
+        if (imageMealsThumb == null) {
+            CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
+            params.height = 3 * 50; // HEIGHT
+
+            mAppBar.setLayoutParams(params);
+            mAppBar.setExpanded(false);
+        }
     }
 }
