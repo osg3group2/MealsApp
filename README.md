@@ -26,4 +26,4 @@ Alur Kerja
 #hasil
 
 ## Screenshoot
-![](screenshoot/img1.png)
+![](screenshoot/img1.png) ![](screenshoot/img2.png)  ![](screenshoot/img3.png)
