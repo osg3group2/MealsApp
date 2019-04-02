@@ -21,3 +21,9 @@ Alur Kerja
 14. Peserta merubah Labels pada Issues menjadi 'ready to review' jika Task sudah dikirim ke Pull Requests
 15. Ketua me-review Pull Requests peserta, jika sudah OK, ketua merge branch dan menutup Pull Requests dan merubah Labels pada Issues menjadi 'verified'
 16. Peserta akan menutup Task jika Task tersebut sudah selesai dan mencari Task yang mempunyai label 'ready for pickup', jika task tidak ada, silakan menambahkan Task baru yang sesuai dengan user story yang sedang in progress
+
+
+#hasil
+
+## Screenshoot
+![](screenshot/device-2019-04-02-093840.png)
