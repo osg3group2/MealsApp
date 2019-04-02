@@ -23,7 +23,7 @@ Alur Kerja
 16. Peserta akan menutup Task jika Task tersebut sudah selesai dan mencari Task yang mempunyai label 'ready for pickup', jika task tidak ada, silakan menambahkan Task baru yang sesuai dengan user story yang sedang in progress
 
 
-#hasil
+## HASIL KERJA TIM 02
 
 ## Screenshoot
 ![](screenshoot/img8.png)     ![](screenshoot/img2.png)     ![](screenshoot/img3.png)
