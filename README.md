@@ -26,4 +26,4 @@ Alur Kerja
 #hasil
 
 ## Screenshoot
-![](screenshot/device-2019-04-02-093840.png)
+![](screenshoot/img1.png)
